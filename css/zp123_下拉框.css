@@ -48,6 +48,9 @@ module.exports=`
     font-size: 12px;
     transform-origin: 50% 50%;
     transition: transform 0.3s;
+}
+
+.zp123 .zsvg_arrow {
     transform: rotate(-90deg);
 }
 
@@ -128,6 +131,18 @@ module.exports=`
 
 .zcell .zp123 ul {
     margin-top: 12px;
+}
+
+.zp123 .zsvg_x {
+    display: none;
+}
+
+.zp123 .zhas:hover .zsvg_x {
+    display: block;
+}
+
+.zp123 .zhas:hover .zsvg_arrow {
+    display: none;
 }
 
 
