@@ -2,7 +2,9 @@ module.exports=`
 
 /**/
 .zp123 {
+    width: 188px;
     box-sizing: border-box;
+    display: inline-block;
     position: relative;
 }
 
