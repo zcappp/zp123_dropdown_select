@@ -35,7 +35,7 @@ module.exports=`
 }
 
 .zp123 p {
-    line-height: 2;
+    line-height: 30px;
     height: 30px;
     margin: 0 24px 0 11px;
     white-space: pre-wrap;
@@ -121,7 +121,7 @@ module.exports=`
 }
 
 .zcell .zp123 p {
-    line-height: 1.5;
+    line-height: 20px;
     height: 20px;
     white-space: nowrap;
     overflow: hidden;
