@@ -38,7 +38,7 @@ module.exports=`
     line-height: 30px;
     height: 30px;
     margin: 0 24px 0 11px;
-    white-space: pre-wrap;
+    white-space: nowrap;
 }
 
 .zp123 svg {
@@ -117,14 +117,18 @@ module.exports=`
 }
 
 .zcell .zp123 {
+    flex: 1;
     width: 100%;
 }
 
 .zcell .zp123 p {
     line-height: 20px;
     height: 20px;
-    white-space: nowrap;
     overflow: hidden;
+}
+
+.zcell label + .zp123 p {
+    margin-left: 0px;
 }
 
 .zcell .zp123 div {
