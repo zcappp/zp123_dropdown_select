@@ -44,7 +44,7 @@ module.exports=`
 .zp123 svg {
     position: absolute;
     top: 50%;
-    right: 6px;
+    right: 1px;
     margin-top: -6px;
     color: rgba(0, 0, 0, 0.25);
     font-size: 12px;
@@ -143,12 +143,13 @@ module.exports=`
     display: none;
 }
 
-.zp123 .zhas:hover .zsvg_x {
-    display: block;
+.zp123 .zsvg_x:hover {
+    color: black;
 }
 
-.zp123 .zhas:hover .zsvg_arrow {
-    display: none;
+.zp123 .zhas:not(.open):hover .zsvg_x {
+    background: white;
+    display: block;
 }
 
 

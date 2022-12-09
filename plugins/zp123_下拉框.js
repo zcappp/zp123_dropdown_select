@@ -10,7 +10,8 @@ function render(ref) {
         <div onClick={() => pop(ref)} className={(ref.open ? "open": "") + (props.insertRmIcon && labels[idx] ? " zhas": "") + (input ? " zfiltered": "")} >
             {ref.open && props.filter && <input onChange={e => {input = e.target.value; ref.render()}} autoComplete="off"/>}
             <p>{labels[idx] || props.emptyLabel}</p>
-            {svg_arrow}{!!props.insertRmIcon && <span onClick={e => {e.stopPropagation(); ref.setForm(ref.props.dbf, undefined)}}>{svg_x}</span>}
+            <svg className="zsvg zsvg_arrow" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"/></svg>
+            {!!props.insertRmIcon && <svg className="zsvg zsvg_x" onClick={e => {e.stopPropagation(); ref.setForm(ref.props.dbf)}} viewBox="64 64 896 896"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"/></svg>}
         </div>
         {ref.open && <ul>{input ? filter(ref) : ref.options.map((o, i) => 
             <li onClick={() => select(ref, o)} className={i === ref.idx ? "selected" : ""} key={i}>{labels[i] === "" ? <br/> : labels[i]}</li>
@@ -28,11 +29,6 @@ function onInit(ref) {
         warn("options/labels必须是数组")
     } else {
         if (ref.options.length !== ref.labels.length) warn("options/labels的长度必须一致")
-        for (let i = 0; i <= ref.labels.length - 1; i++) {
-            if (typeof ref.labels[i] === "string") continue
-            warn("labels的元素必须是文本类型", ref.labels[i])
-            ref.labels[i] = ref.labels[i] + ""
-        }
         if (props.insertEmpty) {
             ref.options.unshift("")
             ref.labels.unshift(props.emptyLabel || "")
@@ -113,12 +109,12 @@ $plugin({
         prop: "options",
         type: "text",
         label: "options选项数组",
-        ph: "用括弧包裹表达式，优先于子组件"
+        ph: "用括弧包裹表达式，优先于静态选项(子组件)"
     }, {
         prop: "labels",
         type: "text",
         label: "labels标签数组",
-        ph: "不填则同options"
+        ph: "不填则同【options】"
     }, {
         prop: "filter",
         type: "switch",
@@ -134,8 +130,9 @@ $plugin({
     }, {
         prop: "emptyLabel",
         type: "text",
-        label: "空白选项标签",
-        ph: "--未选--"
+        label: "空白选项提示文本",
+        ph: "--未选--",
+        show: 'p.P.insertEmpty'
     }, {
         prop: "onChange",
         type: "exp",
@@ -146,6 +143,3 @@ $plugin({
     onDestroy,
     css
 })
-
-const svg_arrow = <svg className="zsvg zsvg_arrow" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"/></svg>
-const svg_x = <svg className="zsvg zsvg_x" viewBox="64 64 896 896"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"/></svg>
