@@ -44,7 +44,7 @@ module.exports=`
 .zp123 svg {
     position: absolute;
     top: 50%;
-    right: 1px;
+    right: 6px;
     margin-top: -6px;
     color: rgba(0, 0, 0, 0.25);
     font-size: 12px;
@@ -119,6 +119,10 @@ module.exports=`
 .zcell .zp123 {
     flex: 1;
     width: 100%;
+}
+
+.zcell .zp123 svg {
+    right: 1px;
 }
 
 .zcell .zp123 p {
