@@ -19,7 +19,7 @@ function render(ref) {
     </React.Fragment>
 }
 
-function onInit(ref) {
+function init(ref) {
     const { exc, props, render } = ref
     ref.options = exc('clone(o)', { o: props.options || ref.children })
     ref.labels = exc('clone(o)', { o: props.labels || ref.options })
@@ -92,7 +92,7 @@ function pop(ref) {
     }, 9)
 }
 
-function onDestroy(ref) {
+function destroy(ref) {
     document.removeEventListener("keydown", ref.keyDown)
     document.removeEventListener("mousedown", ref.clickOutside)
     document.removeEventListener("touchstart", ref.clickOutside)
@@ -139,7 +139,7 @@ $plugin({
         label: "onChange表达式"
     }],
     render,
-    onInit,
-    onDestroy,
+    init,
+    destroy,
     css
 })
