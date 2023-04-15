@@ -70,7 +70,7 @@ function select(ref, o) {
     ref.input = ""
     ref.open = false
     ref.setForm(ref.props.dbf, o === "" ? undefined : o)
-    if (ref.props.onChange) ref.exc(ref.props.onChange, { ...ref.ctx, $x: o }, () => ref.exc("render()"))
+    if (ref.props.change) ref.exc(ref.props.change, { ...ref.ctx, $x: o }, () => ref.exc("render()"))
 }
 
 function pop(ref) {
@@ -134,7 +134,7 @@ $plugin({
         ph: "--未选--",
         show: 'p.P.insertEmpty'
     }, {
-        prop: "onChange",
+        prop: "change",
         type: "exp",
         label: "onChange表达式"
     }],
