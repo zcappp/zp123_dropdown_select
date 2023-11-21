@@ -20,9 +20,9 @@ function render(ref) {
 }
 
 function init(ref) {
-    const { exc, props, render } = ref
-    ref.options = exc('clone(o)', { o: props.options || ref.children })
-    ref.labels = exc('clone(o)', { o: props.labels || ref.options })
+    const { props, render } = ref
+    ref.options = JSON.parse(JSON.stringify(props.options || ref.children))
+    ref.labels = JSON.parse(JSON.stringify(props.labels || ref.options))
     if (!Array.isArray(ref.options) || !Array.isArray(ref.labels)) {
         ref.options = []
         ref.labels = []
