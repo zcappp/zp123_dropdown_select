@@ -66,11 +66,11 @@ function filter(ref) {
     return options.map((o, i) => <li onClick={() => select(ref, o)} key={i}>{labels[i] === "" ? <br/> : labels[i]}</li>)
 }
 
-function select(ref, o) {
+function select(ref, v) {
     ref.input = ""
     ref.open = false
-    ref.setForm(ref.props.dbf, o === "" ? undefined : o)
-    if (ref.props.change) ref.exc(ref.props.change, { ...ref.ctx, $x: o }, () => ref.exc("render()"))
+    ref.setForm(ref.props.dbf, v === "" ? undefined : v)
+    if (ref.props.change) ref.exc(ref.props.change, { ...ref.ctx, $val: v }, () => ref.exc("render()"))
 }
 
 function pop(ref) {
