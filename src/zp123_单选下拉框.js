@@ -2,9 +2,10 @@ import React from "react"
 import css from "./zp123_单选下拉框.css"
 
 function render(ref) {
-    let { props, input, labels } = ref
+    let { props, getForm, input, labels } = ref
+    if (!getForm) return <div>请置于表单容器中</div>
     if (!props.dbf) return <div>请配置表单字段</div>
-    const value = ref.getForm(props.dbf)
+    const value = getForm(props.dbf)
     const idx = ref.options.indexOf(value)
     return <React.Fragment>
         <div onClick={() => pop(ref)} className={(ref.open ? "open": "") + (props.insertRmIcon && labels[idx] ? " zhas": "") + (input ? " zfiltered": "")} >
@@ -136,7 +137,8 @@ $plugin({
     }, {
         prop: "change",
         type: "exp",
-        label: "onChange表达式"
+        label: "onChange表达式",
+        ph: "$val"
     }],
     render,
     init,
